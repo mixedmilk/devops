@@ -25,7 +25,7 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             base_login(request, user)
-            return render(request, "welcome.html", {'msg': 'welcome'})
+            return render(request, "welcome.html", {'msg': 'welcome to '})
         else:
             print "no.."
     #     user = User.objects.all().filter(username=username)
