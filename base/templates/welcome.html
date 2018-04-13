@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+</head>
+<body>
+    <div style="color:red">{{msg}}</div>
+    <form action="/base/logout" method="POST">
+        {% csrf_token %}
+        <div><input type="submit" name="logout" value="注销"></div>
+    </form>
+</body>
+</html>
