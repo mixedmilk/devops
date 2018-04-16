@@ -27,7 +27,7 @@ def login(request):
             base_login(request, user)
             return render(request, "welcome.html", {'msg': 'welcome to hahah'})
         else:
-            print "no.."
+            return render(request,"login.html",{'loginfail':True})
     #     user = User.objects.all().filter(username=username)
     #         if user:
     #             passwd = User.objects.all().filter(username=username,password=password)
@@ -56,5 +56,7 @@ def ensure_login(request):
         return render(request,"login.html")
 
 @login_required(login_url='/base/login/')
+@permission_required('base.welcome',login_url='/base/login/')
 def welcome(request):
     return render(request,"welcome.html",{'msg':'welcome'})
+
