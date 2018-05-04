@@ -21,7 +21,6 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print username,password
         user = authenticate(username=username, password=password)
         if user is not None:
             base_login(request, user)
@@ -45,7 +44,7 @@ def login(request):
     #             return HttpResponse(msg)
     else:
         return render(request,"login.html")
-        #return HttpResponse("Unknown option")
+            #return HttpResponse("Unknown option")
 
 def logout_view(request):
     logout(request)
@@ -56,7 +55,6 @@ def ensure_login(request):
         return render(request,"login.html")
 
 @login_required(login_url='/base/login/')
-@permission_required('base.welcome',login_url='/base/login/')
+#@permission_required('base.welcome',login_url='/base/login/')
 def welcome(request):
     return render(request,"welcome.html")
-

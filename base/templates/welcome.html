@@ -63,88 +63,64 @@
         }
 
         .navbar-static-top {
-            background-color: #212121;
+            background-color: #48D1CC;
             margin-bottom: 5px;
         }
 
         .navbar-brand {
-            background: url('') no-repeat 10px 8px;
+            background: no-repeat 10px 8px;
             display: inline-block;
             vertical-align: middle;
             padding-left: 50px;
             color: #fff;
         }
+
+        .roll-right .btn-group {
+            right: 60px;
+            width: 80px;
+            padding: 0;
+        }
         </style>
 </head>
-<body>
-    <div class="navbar navbar-duomi navbar-static-top" role="navigation">
-<div class="container-fluid">
-<div class="navbar-header">
-<a class="navbar-brand" href="/Admin/index.html" id="logo">配置管理系统（流量包月）
-</a>
-</div>
-</div>
-</div>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2">
-<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
-<li class="active">
-<a href="#">
-<i class="glyphicon glyphicon-th-large"></i>
-首页
-</a>
-</li>
-<li>
-<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
-<i class="glyphicon glyphicon-cog"></i>
-系统管理
-<span class="pull-right glyphicon glyphicon-chevron-down"></span>
-</a>
-<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-<li><a href="#"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
-<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>菜单管理</a></li>
-<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>角色管理</a></li>
-<li><a href="#"><i class="glyphicon glyphicon-edit"></i>修改密码</a></li>
-<li><a href="#"><i class="glyphicon glyphicon-eye-open"></i>日志查看</a></li>
-</ul>
-</li>
-<li>
-<a href="./plans.html">
-<i class="glyphicon glyphicon-credit-card"></i>
-物料管理
-</a>
-</li>
-<li>
-<a href="./grid.html">
-<i class="glyphicon glyphicon-globe"></i>
-分发配置
-<span class="label label-warning pull-right">5</span>
-</a>
-</li>
-<li>
-<a href="./charts.html">
-<i class="glyphicon glyphicon-calendar"></i>
-图表统计
-</a>
-</li>
-<li>
-<a href="#">
-<i class="glyphicon glyphicon-fire"></i>
-关于系统
-</a>
-</li>
-</ul>
-</div>
-<div class="col-md-10">
-主窗口
-</div>
-</div>
-</div>
-    <!--<div style="color:red">{{msg}}</div>-->
-    <!--<form action="/base/logout" method="POST">-->
-        <!--{% csrf_token %}-->
-        <!--<div><input type="submit" name="logout" value="注销"></div>-->
-    <!--</form>-->
+<body onload='init()'>
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/base/welcome">Home</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">导航元素A</a></li>
+                <li><a href="#">导航元素B</a></li>
+                <li><a href="#">导航元素C</a></li>
+                <form class="navbar-form navbar-left" role="search" id="searchForm" action="" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="search-box" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+                <li><a target="_blank" href="#">管理员登录</a></li>
+                <li><a target="_blank" href="#">登录</a></li>
+                <li><a target="_blank" href="#">注册</a></li>
+                <li id="self-home"><a target="_blank" href="#">个人中心</a></li>
+                <li id="exit"><a target="_blank" href="#">退出</a></li>
+            </ul>
+        </div>
+
+    </nav>
 </body>
+function init(){
+          var user = "<%=session.getAttribute("user")%>";
+          if(user=="null"){
+              var center=document.getElementById("center");
+                  var exit = document.getElementById("exit");
+                  center.style.display='none';
+                  exit.style.display='none';
+            }else{
+                  var register=document.getElementById("register");
+                  var login=document.getElementById("login");
+                  register.style.display='none';
+                  login.style.display='none';
+            }
+            }
 </html>
