@@ -58,5 +58,5 @@ def ensure_login(request):
 @login_required(login_url='/base/login/')
 @permission_required('base.welcome',login_url='/base/login/')
 def welcome(request):
-    return render(request,"welcome.html",{'msg':'welcome'})
+    return render(request,"welcome.html")
 

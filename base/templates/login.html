@@ -107,6 +107,26 @@
 													</span>
 												</div>
 											</div>
+                                            {% if loginfail %}
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                        &times;
+                                                    </button>
+                                                    用户名不存在或者密码错误!!!
+                                                </div>
+
+                                            <!--<h3>警告框（Alert）插件 alert('close') 方法</h3>-->
+                                                <!--<div id="myAlert" class="alert alert-success">-->
+                                                    <!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+                                                    <!--<strong>成功！</strong>结果是成功的。-->
+                                                <!--</div>-->
+                                                <!--<div id="myAlert" class="alert alert-warning">-->
+                                                    <!--<a href="#" class="close" data-dismiss="alert">&times;</a>-->
+                                                    <!--<strong>警告！</strong>您的网络连接有问题。-->
+                                                <!--</div>-->
+
+
+                                            {% endif %}
 											<div class="row bk-margin-top-20 bk-margin-bottom-10">
 												<div class="col-sm-8">
 													<div class="checkbox-custom checkbox-default">
@@ -153,6 +173,13 @@
 
 		<!-- Plugins JS-->
 		<script src="{% static '/plugins/bootkit/js/bootkit.js' %}"></script>
+        <!--<script>-->
+            <!--$(function(){-->
+                <!--$(".close").click(function(){-->
+                    <!--$("#myAlert").alert('close');-->
+                <!--});-->
+            <!--});-->
+        <!--</script>-->
 
 		<!-- Theme JS -->
 		<script src="{% static '/bootstrap/js/jquery.mmenu.min.js' %}"></script>
