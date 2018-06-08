@@ -24,7 +24,7 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             base_login(request, user)
-            return render(request, "welcome.html")
+            return render(request, "hosts.html")
         else:
             return render(request,"login.html",{'loginfail':True})
     #     user = User.objects.all().filter(username=username)
@@ -57,4 +57,4 @@ def ensure_login(request):
 @login_required(login_url='/base/login/')
 #@permission_required('base.welcome',login_url='/base/login/')
 def welcome(request):
-    return render(request,"welcome.html")
+    return render(request,"hosts.html")
