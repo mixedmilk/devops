@@ -19,7 +19,8 @@ from base import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ops/', include('ops.urls')),
-    url(r'^base/',include('base.urls')),
-    url(r'',views.welcome),
+    url(r'^base/', include('base.urls')),
+    url(r'^polls/', include('polls.urls')),
+    # url(r'', views.welcome),
 ]
 

@@ -6,7 +6,7 @@ from django.shortcuts import render,render_to_response
 #from ops.models import User
 from django.core import serializers
 from django import forms
-from models import User
+# from base.models import User
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as base_login
 from django.contrib.auth.decorators import login_required
@@ -21,7 +21,7 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print username,password
+        # print username,password
         user = authenticate(username=username, password=password)
         if user is not None:
             base_login(request, user)
@@ -44,19 +44,19 @@ def login(request):
     #         else:
     #             return HttpResponse(msg)
     else:
-        return render(request,"login.html")
+        return render(request, "login.html")
         #return HttpResponse("Unknown option")
 
 def logout_view(request):
     logout(request)
-    return render(request,"login.html")
+    return render(request, "login.html")
 
 def ensure_login(request):
     if not request.user.is_authenticated:
-        return render(request,"login.html")
+        return render(request, "login.html")
 
 @login_required(login_url='/base/login/')
-@permission_required('base.welcome',login_url='/base/login/')
+@permission_required('base.welcome', login_url='/base/login/')
 def welcome(request):
-    return render(request,"welcome.html",{'msg':'welcome'})
+    return render(request, "welcome.html", {'msg': 'welcome'})
 
