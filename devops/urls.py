@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^ops/', include('ops.urls')),
     url(r'^base/', include('base.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^loginsite/', include('loginsite.urls')),
     # url(r'', views.welcome),
+    url(r'^captcha', include('captcha.urls')) ,
 ]
 
