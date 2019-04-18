@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^loginsite/', include('loginsite.urls')),
     # url(r'', views.welcome),
-    url(r'^captcha', include('captcha.urls')) ,
+    url(r'^captcha', include('captcha.urls')),
+    url(r'^quickstart/', include('quickstart.urls')),
 ]
 

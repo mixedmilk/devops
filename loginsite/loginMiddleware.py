@@ -6,6 +6,8 @@ EXCLUDE_URL = (
      '/loginsite/logout/',
      '/captchaimage/',
      '/loginsite/refresh',
+     '/loginsite/register/',
+     '/quickstart/',
 )
 exclued_path = [re.compile(item) for item in EXCLUDE_URL]
 class PubAuthMiddleWare(MiddlewareMixin):
