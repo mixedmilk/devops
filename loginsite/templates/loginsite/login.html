@@ -52,7 +52,6 @@
             'cursor': 'pointer'
         })
     $('.captcha').click(function(){
-        console.log('click');
         $.getJSON('/loginsite/refresh/',
             function(result){
                 $('.captcha').attr('src', result['image_url']);

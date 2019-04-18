@@ -2,14 +2,14 @@
 from __future__ import unicode_literals
 from .models import User
 from django.shortcuts import render, redirect, render_to_response
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import JsonResponse, Http404, HttpResponse, HttpResponseRedirect
 from django.db import models
 from django import forms
 from .forms import UserForm, RegisterForm
 import hashlib
 from captcha.models import CaptchaStore
 import json
-import time
+
 def hash_code(s, salt='mysite'):  # 加点盐
     h = hashlib.sha256()
     s += salt
@@ -32,11 +32,17 @@ def captcha_refresh(request):
     # Create your views here.
 def index(request):
     # return render(request, 'base.html')
+    # for k, v in request.session.items():
+    #     print k, v
+    # print dir(request.session)
+    # print dir(request.session.get_expiry_date)
+    # print request.session.get_expiry_date()
+    # print request.session.get_expiry_age()
     return render(request, 'loginsite/index.html')
 
 def logout(request):
     if not request.session.get('is_login', None):
-        return redirect('/loginsite/index')
+        return redirect('/loginsite/login')
     request.session.flush()
     return redirect('/loginsite/index')
 
@@ -101,8 +107,9 @@ def login(request):
                 # endUsertime = time.time()
                 # print endUsertime - beginUsertime
                 if user.password == hash_code(password):
-                    if remember:
-                        request.session['is_login'] = True
+                    if not remember:
+                        request.session.set_expiry(1800)
+                    request.session['is_login'] = True
                     request.session['user_id'] = user.id
                     request.session['user_name'] = user.name
                     return redirect('/loginsite/index/')
