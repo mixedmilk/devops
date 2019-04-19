@@ -25,7 +25,7 @@ SECRET_KEY = '^0vu^0*39=r@_)!-y)tonim_3c3q96ddbw&slf^tq_%&jl*_*c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.1.137', '*']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'loginsite.apps.LoginsiteConfig',
     'captcha',
     'rest_framework',
+    'quickstart',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
 
